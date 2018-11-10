@@ -40,6 +40,10 @@ namespace NotificationServiceApi
                 loggerFactory.AddDebug();
             }
 
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<NotificationHub>("/notificationHub");
+            });
             app.UseMvc();
         }
     }
