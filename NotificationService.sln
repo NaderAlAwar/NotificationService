@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationServiceApi", "NotificationServiceApi\NotificationServiceApi.csproj", "{BF0C04C9-7E88-4E57-A1E8-2166E0087E25}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotificationServiceApi", "NotificationServiceApi\NotificationServiceApi.csproj", "{BF0C04C9-7E88-4E57-A1E8-2166E0087E25}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotificationServiceTests", "NotificationServiceTests\NotificationServiceTests.csproj", "{5E2AA6E5-B07D-4D53-9EE3-6D13B28478D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,9 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{BF0C04C9-7E88-4E57-A1E8-2166E0087E25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -30,5 +29,23 @@ Global
 		{BF0C04C9-7E88-4E57-A1E8-2166E0087E25}.Release|x64.Build.0 = Release|Any CPU
 		{BF0C04C9-7E88-4E57-A1E8-2166E0087E25}.Release|x86.ActiveCfg = Release|Any CPU
 		{BF0C04C9-7E88-4E57-A1E8-2166E0087E25}.Release|x86.Build.0 = Release|Any CPU
+		{5E2AA6E5-B07D-4D53-9EE3-6D13B28478D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E2AA6E5-B07D-4D53-9EE3-6D13B28478D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E2AA6E5-B07D-4D53-9EE3-6D13B28478D1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{5E2AA6E5-B07D-4D53-9EE3-6D13B28478D1}.Debug|x64.Build.0 = Debug|Any CPU
+		{5E2AA6E5-B07D-4D53-9EE3-6D13B28478D1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5E2AA6E5-B07D-4D53-9EE3-6D13B28478D1}.Debug|x86.Build.0 = Debug|Any CPU
+		{5E2AA6E5-B07D-4D53-9EE3-6D13B28478D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E2AA6E5-B07D-4D53-9EE3-6D13B28478D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E2AA6E5-B07D-4D53-9EE3-6D13B28478D1}.Release|x64.ActiveCfg = Release|Any CPU
+		{5E2AA6E5-B07D-4D53-9EE3-6D13B28478D1}.Release|x64.Build.0 = Release|Any CPU
+		{5E2AA6E5-B07D-4D53-9EE3-6D13B28478D1}.Release|x86.ActiveCfg = Release|Any CPU
+		{5E2AA6E5-B07D-4D53-9EE3-6D13B28478D1}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {110C6C45-104C-42CE-AE32-AE2AB70932D2}
 	EndGlobalSection
 EndGlobal

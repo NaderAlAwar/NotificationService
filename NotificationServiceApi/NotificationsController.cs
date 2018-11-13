@@ -19,7 +19,7 @@ namespace NotificationServiceApi
         }
 
         [HttpPost("{username}")]
-        public async Task<IActionResult> PostNotification(string username, [FromBody] string payload)
+        public async Task<IActionResult> PostNotification(string username, [FromBody] NotificationPayload payload)
         {
             await hubContext.Clients.Group(username).SendAsync("ReceiveNotification", payload);
             return Ok();
