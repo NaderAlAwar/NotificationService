@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Azure.ServiceBus;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
 namespace NotificationServiceApi
@@ -15,11 +16,13 @@ namespace NotificationServiceApi
     {
         private readonly IHubContext<NotificationHub> hubContext;
         private readonly IQueueClient queueClient;
+        private readonly ILogger<NotificationsService> logger;
 
-        public NotificationsService(IHubContext<NotificationHub> hubContext, IQueueClient queueClient)
+        public NotificationsService(IHubContext<NotificationHub> hubContext, IQueueClient queueClient, ILogger<NotificationsService> logger)
         {
             this.hubContext = hubContext;
             this.queueClient = queueClient;
+            this.logger = logger;
             queueClient.RegisterMessageHandler(PostNotification, ExceptionReceivedHandler);
         }
 
@@ -29,19 +32,13 @@ namespace NotificationServiceApi
             NotificationPayload notificationPayload = JsonConvert.DeserializeObject<NotificationPayload>(body);
             foreach (var username in notificationPayload.Users)
             {
-                await hubContext.Clients.Group(username).SendAsync("ReceiveNotification", notificationPayload);
+                await hubContext.Clients.Group(username).SendAsync("ReceiveNotification", notificationPayload, token);
             }
         }
 
-        //TODO: Need to log this
-        static Task ExceptionReceivedHandler(ExceptionReceivedEventArgs exceptionReceivedEventArgs)
+        private Task ExceptionReceivedHandler(ExceptionReceivedEventArgs exceptionReceivedEventArgs)
         {
-            Console.WriteLine($"Message handler encountered an exception {exceptionReceivedEventArgs.Exception}.");
-            var context = exceptionReceivedEventArgs.ExceptionReceivedContext;
-            Console.WriteLine("Exception context for troubleshooting:");
-            Console.WriteLine($"- Endpoint: {context.Endpoint}");
-            Console.WriteLine($"- Entity Path: {context.EntityPath}");
-            Console.WriteLine($"- Executing Action: {context.Action}");
+            logger.LogError(Events.ServiceBusException, exceptionReceivedEventArgs.Exception, "Message handler encountered an exception");
             return Task.CompletedTask;
         }
 

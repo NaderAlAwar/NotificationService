@@ -1,4 +1,13 @@
+using Microsoft.Azure.ServiceBus;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NotificationServiceApi;
+using System;
+using Newtonsoft.Json;
+using System.Text;
+using Moq;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
 namespace NotificationServiceTests
 {
@@ -8,13 +17,12 @@ namespace NotificationServiceTests
         [TestInitialize]
         public void TestInitialize()
         {
-
         }
 
         [TestMethod]
         public void NotificationReceivedTest()
         {
-            Assert.AreEqual(true, true); //temporary. needed for build pipeline to work
+           Assert.AreEqual(true, true); 
         }
     }
 }

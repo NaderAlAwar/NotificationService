@@ -29,7 +29,8 @@ namespace NotificationServiceApi
             NotificationServiceSettings settings = new NotificationServiceSettings();
             config.Bind(settings);
 
-            QueueClient client = new QueueClient(settings.ServiceBusConnectionString, settings.QueueName);
+            IQueueClient client = new QueueClient(settings.ServiceBusConnectionString, settings.QueueName);
+            services.AddSingleton<IQueueClient>(client);
 
             services.AddOptions();
             services.AddLogging();
