@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Azure.ServiceBus;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -24,6 +25,12 @@ namespace NotificationServiceApi
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            var config = Configuration.GetSection(typeof(NotificationServiceSettings).Name);
+            NotificationServiceSettings settings = new NotificationServiceSettings();
+            config.Bind(settings);
+
+            QueueClient client = new QueueClient(settings.ServiceBusConnectionString, settings.QueueName);
+
             services.AddOptions();
             services.AddLogging();
             services.AddMvc();
